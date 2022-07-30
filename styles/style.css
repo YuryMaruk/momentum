@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+.header {
+    min-height: 20vh;
+    border: 1px solid red;
+}
+
+.footer {
+    min-height: 20vh;
+    border: 1px solid red;
+}
