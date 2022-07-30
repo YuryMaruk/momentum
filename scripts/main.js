@@ -26,10 +26,10 @@ showDate();
 /* Show greeting */
 
 function showGreeting() {
-    const greeting = document.querySelector('.greeting');
+    const greetingSpan = document.querySelector('.greeting-span');
     const timeOfDay = getTimeOfDay();
-    
-    greeting.textContent = `Good ${timeOfDay}`;
+
+    greetingSpan.textContent = `Good ${timeOfDay}`;
     setInterval(showGreeting, 1000);
 }
 
@@ -47,17 +47,37 @@ function getTimeOfDay() {    /* This function returns the time of day */
             timeOfDay = 'morning';
             break;
         case 2:
-            timeOfDay = 'day';
+            timeOfDay = 'afternoon';
             break;
         case 3:
             timeOfDay = 'evening';
-            break; 
+            break;
     }
 
     return timeOfDay;
 }
 
 showGreeting();
+
+/* Show name of user */
+
+const greetingInput = document.querySelector('.greeting-input');
+
+function setLocalStorage() {
+    localStorage.setItem('userName', greetingInput.value);
+}
+
+window.addEventListener('beforeunload', setLocalStorage);
+
+function getLocalStorage() {
+    if (localStorage.getItem('userName')) {
+        greetingInput.value = localStorage.getItem('userName');
+    }
+}
+window.addEventListener('load', getLocalStorage);
+
+
+
 
 
 
