@@ -43,6 +43,14 @@ html {
     gap: 20px;
 }
 
+.time {
+    font-size: 80px;
+}
+
+.date {
+    font-size: 24px;
+}
+
 .greeting {
     display: flex;
     flex-wrap: wrap;
@@ -55,6 +63,7 @@ html {
 .greeting-span {
     flex: 1;
     text-align: right;
+    font-size: 40px;
 }
 
 .greeting-input {

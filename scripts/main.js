@@ -2,7 +2,8 @@ const timeClass = document.querySelector('.time'),
     dateClass = document.querySelector('.date'),
     greetingSpan = document.querySelector('.greeting-span'),
     greetingInput = document.querySelector('.greeting-input'),
-    date = new Date();
+    date = new Date(),
+    body = document.querySelector('.body');
 
 /* Show time */
 
@@ -74,6 +75,10 @@ function getLocalStorage() {
     }
 }
 window.addEventListener('load', getLocalStorage);
+
+/* Slider background images */
+
+body.style.backgroundImage = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/evening/18.jpg')";
 
 
 
