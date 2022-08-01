@@ -78,7 +78,25 @@ window.addEventListener('load', getLocalStorage);
 
 /* Slider background images */
 
-body.style.backgroundImage = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/evening/18.jpg')";
+function getRandomInt(min, max) { /* function return random number from min to max */
+    min = Math.ceil(min);
+    max = Math.floor(max);
+
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
+
+function setBg() {              /*  function set random background image */
+    timeOfDay = getTimeOfDay();
+
+    bgNum = getRandomInt(1, 20);
+
+    bgNum < 10 ? bgNum = String(bgNum).padStart(2, 0) : bgNum;
+    console.log(bgNum, timeOfDay);
+    body.style.backgroundImage = `url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg')`;
+}
+
+setBg();
 
 
 
