@@ -1,8 +1,12 @@
+const timeClass = document.querySelector('.time'),
+    dateClass = document.querySelector('.date'),
+    greetingSpan = document.querySelector('.greeting-span'),
+    greetingInput = document.querySelector('.greeting-input'),
+    date = new Date();
+
 /* Show time */
 
 function showTime() {
-    const timeClass = document.querySelector('.time');
-    const date = new Date();
     const currentTime = date.toLocaleTimeString();
     timeClass.textContent = currentTime;
     setInterval(showTime, 1000);
@@ -13,8 +17,6 @@ showTime();
 /* Show date */
 
 function showDate() {
-    const dateClass = document.querySelector('.date');
-    const date = new Date();
     const options = { weekday: 'long', month: 'long', day: '2-digit' };
     const currentDate = date.toLocaleDateString('en-En', options);
     dateClass.textContent = currentDate;
@@ -26,7 +28,6 @@ showDate();
 /* Show greeting */
 
 function showGreeting() {
-    const greetingSpan = document.querySelector('.greeting-span');
     const timeOfDay = getTimeOfDay();
 
     greetingSpan.textContent = `Good ${timeOfDay}`;
@@ -60,8 +61,6 @@ function getTimeOfDay() {    /* This function returns the time of day */
 showGreeting();
 
 /* Show name of user */
-
-const greetingInput = document.querySelector('.greeting-input');
 
 function setLocalStorage() {
     localStorage.setItem('userName', greetingInput.value);
