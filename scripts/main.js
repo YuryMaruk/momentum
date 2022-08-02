@@ -2,12 +2,12 @@ const timeClass = document.querySelector('.time'),
     dateClass = document.querySelector('.date'),
     greetingSpan = document.querySelector('.greeting-span'),
     greetingInput = document.querySelector('.greeting-input'),
-    date = new Date(),
     body = document.querySelector('.body');
 
 /* Show time */
 
 function showTime() {
+    const date = new Date();
     const currentTime = date.toLocaleTimeString();
     timeClass.textContent = currentTime;
     setInterval(showTime, 1000);
@@ -18,6 +18,7 @@ showTime();
 /* Show date */
 
 function showDate() {
+    const date = new Date();
     const options = { weekday: 'long', month: 'long', day: '2-digit' };
     const currentDate = date.toLocaleDateString('en-En', options);
     dateClass.textContent = currentDate;
@@ -30,7 +31,6 @@ showDate();
 
 function showGreeting() {
     const timeOfDay = getTimeOfDay();
-
     greetingSpan.textContent = `Good ${timeOfDay}`;
     setInterval(showGreeting, 1000);
 }
@@ -81,18 +81,14 @@ window.addEventListener('load', getLocalStorage);
 function getRandomInt(min, max) { /* function return random number from min to max */
     min = Math.ceil(min);
     max = Math.floor(max);
-
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
 
 function setBg() {              /*  function set random background image */
     timeOfDay = getTimeOfDay();
-
     bgNum = getRandomInt(1, 20);
-
     bgNum < 10 ? bgNum = String(bgNum).padStart(2, 0) : bgNum;
-    console.log(bgNum, timeOfDay);
     body.style.backgroundImage = `url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg')`;
 }
 
