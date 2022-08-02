@@ -45,11 +45,17 @@ html {
 }
 
 .time {
-    font-size: 80px;
+    min-height: 124px;
+    margin-bottom: 10px;
+    font-family: 'Arial-MT';
+    font-size: 100px;
+    letter-spacing: -4px;
 }
 
 .date {
+    min-height: 28px;
     font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .greeting {
@@ -59,17 +65,17 @@ html {
     align-items: center;
     width: 100%;
     gap: 10px;
+    font-size: 40px;
 }
 
 .greeting-span {
     flex: 1;
     text-align: right;
-    font-size: 40px;
+    
 }
 
 .greeting-input {
     flex: 1;
-    font-size: 40px;
     text-align: left;
     color: #fff;
     background-color: transparent;
@@ -85,48 +91,48 @@ html {
 .player-icon,
 .slider-icon,
 .change-quote {
-  width: 32px;
-  height: 32px;
-  background-size: 32px 32px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  border: 0;
-  outline: 0;
-  opacity: .8;
-  cursor: pointer;
-  transition: .3s;  
+    width: 32px;
+    height: 32px;
+    background-size: 32px 32px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    opacity: .8;
+    cursor: pointer;
+    transition: .3s;
 }
 
 .player-icon:hover,
 .slider-icon:hover,
 .change-quote:hover {
-  opacity: 1;
+    opacity: 1;
 }
 
 .player-icon:active,
 .slider-icon:active,
 .change-quote:active {
-  border: 0;
-  outline: 0;  
-  transform: scale(1.1);
+    border: 0;
+    outline: 0;
+    transform: scale(1.1);
 }
 
 .slider-icon {
     position: absolute;
     top: 50%;
     margin-top: -16px;
-  }
-  
-  .slide-prev {
+}
+
+.slide-prev {
     left: 20px;
     background-image: url("../images/slider-prev.svg");
-  }
-  
-  .slide-next {
+}
+
+.slide-next {
     right: 20px;
     background-image: url("../images/slider-next.svg");
-  }
+}
 
 
 
