@@ -4,7 +4,10 @@ const timeClass = document.querySelector('.time'),
     greetingInput = document.querySelector('.greeting-input'),
     body = document.querySelector('.body'),
     slideNext = document.querySelector('.slide-next'),
-    slidePrev = document.querySelector('.slide-prev');
+    slidePrev = document.querySelector('.slide-prev'),
+    weatherIcon = document.querySelector('.weather-icon'),
+    temperature = document.querySelector('.temperature'),
+    weatherDescription = document.querySelector('.weather-description');
 
 let randomNum = 0;
 
@@ -88,11 +91,13 @@ function getRandomInt(min, max) { /* function return random number from min to m
     randomNum = Math.floor(Math.random() * (max - min)) + min;
 }
 
+getRandomInt(1, 20);
+
 
 function setBg() {              /*  function set random background image */
     const timeOfDay = getTimeOfDay();
     const img = new Image();
-    getRandomInt(1, 20);
+    
     randomNum < 10 ? randomNum = String(randomNum).padStart(2, 0) : randomNum;
     img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${randomNum}.jpg`;
     img.onload = () => {
@@ -115,12 +120,16 @@ slidePrev.addEventListener('click', getSlidePrev);
 
 /* Weather widget */
 
-async function getWeather() {  
+async function getWeather() {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=Минск&lang=ru&appid=be4c950c170a180eb8db5834646f012c&units=metric`;
     const res = await fetch(url);
-    const data = await res.json(); 
+    const data = await res.json();
     console.log(data.weather[0].id, data.weather[0].description, data.main.temp);
-  }
+
+    temperature.textContent = `${data.main.temp}°C`;
+    weatherDescription.textContent = data.weather[0].description;
+
+}
 getWeather();
 
 setBg(); /* set background image when load page */
