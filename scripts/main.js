@@ -2,7 +2,10 @@ const timeClass = document.querySelector('.time'),
     dateClass = document.querySelector('.date'),
     greetingSpan = document.querySelector('.greeting-span'),
     greetingInput = document.querySelector('.greeting-input'),
-    body = document.querySelector('.body');
+    body = document.querySelector('.body'),
+    slideNext = document.querySelector('.slide-next'),
+    slidePrev = document.querySelector('.slide-prev');
+
 let randomNum = 0;
 
 /* Show time */
@@ -103,7 +106,12 @@ function getSlidePrev() {   /* function change background image when user click 
      setBg();
  }
 
-setBg();
+ slideNext.addEventListener('click', getSlideNext);
+ slidePrev.addEventListener('click', getSlidePrev);
+
+
+
+setBg(); /* change background image when load page */
 
 
 
