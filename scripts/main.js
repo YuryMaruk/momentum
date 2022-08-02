@@ -113,7 +113,19 @@ function getSlidePrev() {   /* function change background image when user click 
 slideNext.addEventListener('click', getSlideNext);
 slidePrev.addEventListener('click', getSlidePrev);
 
-setBg(); /* change background image when load page */
+/* Weather widget */
+
+async function getWeather() {  
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=Минск&lang=ru&appid=be4c950c170a180eb8db5834646f012c&units=metric`;
+    const res = await fetch(url);
+    const data = await res.json(); 
+    console.log(data.weather[0].id, data.weather[0].description, data.main.temp);
+  }
+getWeather();
+
+setBg(); /* set background image when load page */
+
+
 
 
 

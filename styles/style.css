@@ -30,7 +30,10 @@ html {
 /* Header */
 
 .header {
+    display: flex;
+    justify-content: space-between;
     min-height: 20vh;
+    padding: 20px;
     border: 1px solid red;
 }
 
