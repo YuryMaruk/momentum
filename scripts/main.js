@@ -90,26 +90,28 @@ function getRandomInt(min, max) { /* function return random number from min to m
 
 
 function setBg() {              /*  function set random background image */
-    timeOfDay = getTimeOfDay();
+    const timeOfDay = getTimeOfDay();
+    const img = new Image();
     getRandomInt(1, 20);
     randomNum < 10 ? randomNum = String(randomNum).padStart(2, 0) : randomNum;
-    body.style.backgroundImage = `url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${randomNum}.jpg')`;
+    img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${randomNum}.jpg`;
+    img.onload = () => {
+        body.style.backgroundImage = `url(${img.src})`;
+    };
 }
 
 function getSlideNext() {   /* function change background image when user click element rightArrow */
-   randomNum  === 20 ? randomNum = 1 : randomNum++;
+    randomNum === 20 ? randomNum = 1 : randomNum++;
     setBg();
 }
 
 function getSlidePrev() {   /* function change background image when user click element leftArrow */
-    randomNum  === 1 ? randomNum = 20 : randomNum--;
-     setBg();
- }
+    randomNum === 1 ? randomNum = 20 : randomNum--;
+    setBg();
+}
 
- slideNext.addEventListener('click', getSlideNext);
- slidePrev.addEventListener('click', getSlidePrev);
-
-
+slideNext.addEventListener('click', getSlideNext);
+slidePrev.addEventListener('click', getSlidePrev);
 
 setBg(); /* change background image when load page */
 
