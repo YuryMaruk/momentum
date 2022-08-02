@@ -121,13 +121,14 @@ slidePrev.addEventListener('click', getSlidePrev);
 /* Weather widget */
 
 async function getWeather() {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=Минск&lang=ru&appid=be4c950c170a180eb8db5834646f012c&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=Минск&lang=ru&appid=8e1bd9aa041e2c8646f4afd33df4d61b&units=metric`;
     const res = await fetch(url);
     const data = await res.json();
     console.log(data.weather[0].id, data.weather[0].description, data.main.temp);
 
     temperature.textContent = `${data.main.temp}°C`;
     weatherDescription.textContent = data.weather[0].description;
+    weatherIcon.classList.add(`owf-${data.weather[0].id}`);
 
 }
 getWeather();
