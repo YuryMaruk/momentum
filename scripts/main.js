@@ -119,6 +119,8 @@ function getSlidePrev() {   /* function change background image when user click 
 slideNext.addEventListener('click', getSlideNext);
 slidePrev.addEventListener('click', getSlidePrev);
 
+setBg(); /* set background image when load page */
+
 /* Weather widget */
 
 async function getWeather() {  /* function return weather*/
@@ -134,9 +136,11 @@ async function getWeather() {  /* function return weather*/
 
 city.addEventListener('change', getWeather);
 
-setBg(); /* set background image when load page */
-
 getWeather();
+
+/* Quote widget */
+
+
 
 
 

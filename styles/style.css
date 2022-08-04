@@ -196,3 +196,16 @@ html {
     min-height: 20vh;
     border: 1px solid red;
 }
+
+.change-quote {
+    margin-bottom: 30px;
+    background-image: url("../images/reload.svg");  
+  }
+  
+  .quote {
+    min-height: 32px;
+  }
+  
+  .author {
+    min-height: 20px;
+  }
