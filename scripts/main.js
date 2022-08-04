@@ -98,7 +98,7 @@ getRandomInt(1, 20);
 function setBg() {              /*  function set random background image */
     const timeOfDay = getTimeOfDay();
     const img = new Image();
-    
+
     randomNum < 10 ? randomNum = String(randomNum).padStart(2, 0) : randomNum;
     img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${randomNum}.jpg`;
     img.onload = () => {
@@ -121,22 +121,22 @@ slidePrev.addEventListener('click', getSlidePrev);
 
 /* Weather widget */
 
-async function getWeather() {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=Минск&lang=ru&appid=8e1bd9aa041e2c8646f4afd33df4d61b&units=metric`;
+async function getWeather() {  /* function return weather*/
+    city.value === '' ? city.value = 'Минск' : false;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=ru&appid=8e1bd9aa041e2c8646f4afd33df4d61b&units=metric`;
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data.weather[0].id, data.weather[0].description, data.main.temp);
 
     temperature.textContent = `${data.main.temp}°C`;
     weatherDescription.textContent = data.weather[0].description;
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
-
 }
-getWeather();
+
+city.addEventListener('change', getWeather);
 
 setBg(); /* set background image when load page */
 
-
+getWeather();
 
 
 
