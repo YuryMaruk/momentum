@@ -8,7 +8,10 @@ const timeClass = document.querySelector('.time'),
     weatherIcon = document.querySelector('.weather-icon'),
     temperature = document.querySelector('.temperature'),
     weatherDescription = document.querySelector('.weather-description'),
-    city = document.querySelector('.city');
+    city = document.querySelector('.city'),
+    buttonQuote = document.querySelector('.change-quote'),
+    quote = document.querySelector('.quote'),
+    author = document.querySelector('.author');
 
 let randomNum = 0;
 
@@ -92,7 +95,7 @@ function getRandomInt(min, max) { /* function return random number from min to m
     randomNum = Math.floor(Math.random() * (max - min)) + min;
 }
 
-getRandomInt(1, 20);
+getRandomInt(1, 21);
 
 
 function setBg() {              /*  function set random background image */
@@ -140,7 +143,20 @@ getWeather();
 
 /* Quote widget */
 
+async function getQuote() {      /*function return random quote */
+    const quotes = '../json/data.json';
+    const res = await fetch(quotes);
+    const data = await res.json();
+    const randomNumber = getRandomInt(0, data.length);
+    const quotesItem = data[randomNum];
 
+    quote.textContent = quotesItem.text;
+    author.textContent = quotesItem.author;
+}
+
+buttonQuote.addEventListener('click', getQuote);
+
+getQuote();
 
 
 

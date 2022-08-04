@@ -32,9 +32,11 @@ html {
 .header {
     display: flex;
     justify-content: space-between;
-    min-height: 20vh;
+    align-items: flex-start;
+    width: 100%;
+    height: 30vh;
+    min-height: 220px;
     padding: 20px;
-    border: 1px solid red;
 }
 
 /* Start weather widget styles */
@@ -46,47 +48,47 @@ html {
     align-items: flex-start;
     row-gap: 5px;
     width: 180px;
-    min-height: 180px;  
+    min-height: 180px;
     text-align: left;
-  }
-  
-  .weather-error {
+}
+
+.weather-error {
     margin-top: -10px;
-  }
-  
-  .description-container {
+}
+
+.description-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
     column-gap: 12px;
-  }
-  
-  
-  .weather-icon {
+}
+
+
+.weather-icon {
     font-size: 44px;
-  }
-  
-  .city {
+}
+
+.city {
     width: 170px;
     height: 34px;
     padding: 5px;
     font-size: 20px;
     line-height: 24px;
-    color: #fff;  
+    color: #fff;
     border: 0;
     outline: 0;
     border-bottom: 1px solid #fff;
     background-color: transparent;
-  }
-  
-  .city::placeholder {  
+}
+
+.city::placeholder {
     font-size: 20px;
     color: #fff;
     opacity: .6;
-  }
+}
 
-  /* End weather widget styles */
+/* End weather widget styles */
 
 /* Main */
 
@@ -125,7 +127,7 @@ html {
 .greeting-span {
     flex: 1;
     text-align: right;
-    
+
 }
 
 .greeting-input {
@@ -193,19 +195,25 @@ html {
 /* Footer */
 
 .footer {
-    min-height: 20vh;
-    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 30vh;
+    min-height: 160px;
+    padding: 20px;
 }
 
 .change-quote {
     margin-bottom: 30px;
-    background-image: url("../images/reload.svg");  
-  }
-  
-  .quote {
+    background-image: url("../images/reload.svg");
+}
+
+.quote {
     min-height: 32px;
-  }
-  
-  .author {
+}
+
+.author {
     min-height: 20px;
-  }
+}
