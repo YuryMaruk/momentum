@@ -7,7 +7,8 @@ const timeClass = document.querySelector('.time'),
     slidePrev = document.querySelector('.slide-prev'),
     weatherIcon = document.querySelector('.weather-icon'),
     temperature = document.querySelector('.temperature'),
-    weatherDescription = document.querySelector('.weather-description');
+    weatherDescription = document.querySelector('.weather-description'),
+    city = document.querySelector('.city');
 
 let randomNum = 0;
 
@@ -111,7 +112,7 @@ function getSlideNext() {   /* function change background image when user click 
 }
 
 function getSlidePrev() {   /* function change background image when user click element leftArrow */
-    randomNum === 1 ? randomNum = 20 : randomNum--;
+    randomNum === '01' ? randomNum = 20 : randomNum--;
     setBg();
 }
 
