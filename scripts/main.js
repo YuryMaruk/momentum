@@ -1,3 +1,5 @@
+import playList from "./playList.js";
+
 const timeClass = document.querySelector('.time'),
     dateClass = document.querySelector('.date'),
     greetingSpan = document.querySelector('.greeting-span'),
@@ -12,12 +14,15 @@ const timeClass = document.querySelector('.time'),
     buttonQuote = document.querySelector('.change-quote'),
     quote = document.querySelector('.quote'),
     author = document.querySelector('.author'),
-    playPrev = document.querySelector('.play-prev'),
-    playNext = document.querySelector('.play-next'),
-    play = document.querySelector('.play');
+    playPrevBtn = document.querySelector('.play-prev'),
+    playNextBtn = document.querySelector('.play-next'),
+    playBtn = document.querySelector('.play'),
+    ulPlayList = document.querySelector('.play-list');
+
 
 let randomNum = 0,
-    isPlay = false;
+    isPlay = false,
+    playNum = 0;
 
 
 /* Show time */
@@ -165,13 +170,34 @@ getQuote();
 
 /* Audio player */
 
+/* add tittle tracks in player */
+
+playList.forEach(item => {
+    const li = document.createElement('li');
+    li.classList.add('play-item');
+    li.textContent = `${item.title}`;
+    ulPlayList.append(li);
+})
+
+const playItems = document.querySelectorAll('.play-item'); 
+
+
+function highlightTrack(list) { /* function highlights the track that's playing */
+    list.forEach(item => {
+        item.classList.remove('item-active');
+    })
+    list[playNum].classList.add('item-active');
+}
+
 const audio = new Audio();
 
-function playAudio() {
-    audio.src = "../audio/audio2.mp3";
+function playAudio() {   
+    audio.src = playList[playNum].src;
     audio.currentTime = 0;
 
-    if(!isPlay){
+    highlightTrack(playItems);
+
+    if (!isPlay) {
         audio.play();
         isPlay = true;
         console.log('play');
@@ -181,13 +207,35 @@ function playAudio() {
         console.log('pause');
     };
 
-    play.classList.toggle('pause');
+    playBtn.classList.toggle('pause');
+
 }
 
-play.addEventListener('click', playAudio);
+function playNext() {
+    isPlay = false;
+    playBtn.classList.toggle('pause');
+    playNum === (playList.length - 1) ? playNum = 0 : playNum++;
+    playAudio();
+}
+
+function playPrev() {
+    isPlay = false;
+    playBtn.classList.toggle('pause');
+    playNum === 0 ? playNum = playList.length - 1 : playNum--;
+    playAudio();
+}
+
+playBtn.addEventListener('click', playAudio);
+playNextBtn.addEventListener('click', playNext);
+playPrevBtn.addEventListener('click', playPrev);
 
 
-/* playAudio(); */
+
+
+
+
+
+
 
 
 
