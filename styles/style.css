@@ -76,7 +76,7 @@ html {
   }
   
   .item-active::before {
-    color: #C5B358;
+    color: #1de90a;
   }
 
   .play {

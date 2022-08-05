@@ -179,7 +179,7 @@ playList.forEach(item => {
     ulPlayList.append(li);
 })
 
-const playItems = document.querySelectorAll('.play-item'); 
+const playItems = document.querySelectorAll('.play-item');
 
 
 function highlightTrack(list) { /* function highlights the track that's playing */
@@ -191,24 +191,30 @@ function highlightTrack(list) { /* function highlights the track that's playing 
 
 const audio = new Audio();
 
-function playAudio() {   
+function playAudio() {
     audio.src = playList[playNum].src;
     audio.currentTime = 0;
 
     highlightTrack(playItems);
 
     if (!isPlay) {
-        audio.play();
         isPlay = true;
-        console.log('play');
+        audio.play();
     } else {
         audio.pause();
         isPlay = false;
-        console.log('pause');
     };
 
     playBtn.classList.toggle('pause');
 
+}
+
+audio.onended = function () {
+    // change the src to be the url of the next song, if the song is the last one in the playlist then the next should be the first one
+    let nextAudio = (++playNum === playList.length) ? 0 : playNum;
+    this.src = playList[nextAudio].src;
+    // the audio player stops after playing each song, so after changing the src just launch the player
+    this.play();
 }
 
 function playNext() {
