@@ -39,6 +39,65 @@ html {
     padding: 20px;
 }
 
+/* Audio player */
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 120px;
+    margin-bottom: 28px;
+  }
+  
+  .play-list {
+    text-align: left;
+  }
+  
+  .play-item {
+    position: relative;
+    padding: 5px;
+    padding-left: 20px;
+    list-style: none;
+    opacity: .8;
+    cursor: pointer;
+    transition: .3s;
+  }
+  
+  .play-item:hover {
+    opacity: 1;
+  }
+  
+  .play-item::before {
+    content: "\2713";  
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-weight: 900;
+  }
+  
+  .item-active::before {
+    color: #C5B358;
+  }
+
+  .play {
+    width: 40px;
+    height: 40px;
+    background-size: 40px 40px;
+    background-image: url("../images/play.svg");
+  }
+  
+  .pause {
+    background-image: url("../images/pause.svg");
+  }
+  
+  .play-prev {
+    background-image: url("../images/play-prev.svg");
+  }
+  
+  .play-next {
+    background-image: url("../images/play-next.svg");
+  }
+
 /* Start weather widget styles */
 
 .weather {

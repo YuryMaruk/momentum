@@ -11,9 +11,14 @@ const timeClass = document.querySelector('.time'),
     city = document.querySelector('.city'),
     buttonQuote = document.querySelector('.change-quote'),
     quote = document.querySelector('.quote'),
-    author = document.querySelector('.author');
+    author = document.querySelector('.author'),
+    playPrev = document.querySelector('.play-prev'),
+    playNext = document.querySelector('.play-next'),
+    play = document.querySelector('.play');
 
-let randomNum = 0;
+let randomNum = 0,
+    isPlay = false;
+
 
 /* Show time */
 
@@ -158,6 +163,31 @@ buttonQuote.addEventListener('click', getQuote);
 
 getQuote();
 
+/* Audio player */
+
+const audio = new Audio();
+
+function playAudio() {
+    audio.src = "../audio/audio2.mp3";
+    audio.currentTime = 0;
+
+    if(!isPlay){
+        audio.play();
+        isPlay = true;
+        console.log('play');
+    } else {
+        audio.pause();
+        isPlay = false;
+        console.log('pause');
+    };
+
+    play.classList.toggle('pause');
+}
+
+play.addEventListener('click', playAudio);
+
+
+/* playAudio(); */
 
 
 
