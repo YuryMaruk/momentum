@@ -211,24 +211,25 @@ function playAudio() {
 
 audio.onended = function () {
     // change the src to be the url of the next song, if the song is the last one in the playlist then the next should be the first one
-    let nextAudio = (++playNum === playList.length) ? 0 : playNum;
-    this.src = playList[nextAudio].src;
+    playNum === playList.length - 1 ? playNum = 0 : playNum++;
+    this.src = playList[playNum].src;
     // the audio player stops after playing each song, so after changing the src just launch the player
     this.play();
+    highlightTrack(playItems);
 }
 
 function playNext() {
     isPlay = false;
     playBtn.classList.toggle('pause');
     playNum === (playList.length - 1) ? playNum = 0 : playNum++;
-    playAudio();
+    /* playAudio(); */
 }
 
 function playPrev() {
     isPlay = false;
     playBtn.classList.toggle('pause');
     playNum === 0 ? playNum = playList.length - 1 : playNum--;
-    playAudio();
+  /*   playAudio(); */
 }
 
 playBtn.addEventListener('click', playAudio);
