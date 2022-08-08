@@ -22,7 +22,8 @@ const timeClass = document.querySelector('.time'),
 
 let randomNum = 0,
     isPlay = false,
-    playNum = 0;
+    playNum = 0,
+    languege = 'en';
 
 
 /* Show time */
@@ -153,8 +154,18 @@ getWeather();
 
 /* Quote widget */
 
-async function getQuote() {      /*function return random quote */
-    const quotes = '../json/data.json';
+async function getQuote(lang) {      /*function return random quote */
+    let quotes = '';
+
+    switch (lang) {
+        case 'ru':
+            quotes = '../json/data.json';
+            break;
+        case 'en':
+            quotes = '../json/dataEN.json';
+            break;
+    }
+    
     const res = await fetch(quotes);
     const data = await res.json();
     const randomNumber = getRandomInt(0, data.length);
@@ -164,9 +175,9 @@ async function getQuote() {      /*function return random quote */
     author.textContent = quotesItem.author;
 }
 
-buttonQuote.addEventListener('click', getQuote);
+buttonQuote.addEventListener('click', () => getQuote(languege));
 
-getQuote();
+getQuote(languege);
 
 /* Audio player */
 
@@ -197,7 +208,7 @@ function playAudio() {
 
     highlightTrack(playItems);
     playBtn.classList.remove('pause');
-    
+
     if (!isPlay) {
         playBtn.classList.add('pause');
         isPlay = true;
@@ -233,6 +244,8 @@ function playPrev() {
 playBtn.addEventListener('click', playAudio);
 playNextBtn.addEventListener('click', playNext);
 playPrevBtn.addEventListener('click', playPrev);
+
+
 
 
 
