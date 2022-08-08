@@ -175,7 +175,7 @@ getQuote();
 playList.forEach(item => {
     const li = document.createElement('li');
     li.classList.add('play-item');
-    li.textContent = `${item.title}`;
+    li.textContent = `${item.title} | ${item.duration}`;
     ulPlayList.append(li);
 })
 
