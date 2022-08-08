@@ -182,7 +182,7 @@ playList.forEach(item => {
 const playItems = document.querySelectorAll('.play-item');
 
 
-function highlightTrack(list) { /* function highlights the track that's playing */
+function highlightTrack(list) { /* function highlights the song that's playing */
     list.forEach(item => {
         item.classList.remove('item-active');
     })
@@ -196,17 +196,17 @@ function playAudio() {
     audio.currentTime = 0;
 
     highlightTrack(playItems);
-
+    playBtn.classList.remove('pause');
+    
     if (!isPlay) {
+        playBtn.classList.add('pause');
         isPlay = true;
         audio.play();
     } else {
+        playBtn.classList.remove('pause');
         audio.pause();
         isPlay = false;
     };
-
-    playBtn.classList.toggle('pause');
-
 }
 
 audio.onended = function () {
@@ -220,16 +220,14 @@ audio.onended = function () {
 
 function playNext() {
     isPlay = false;
-    playBtn.classList.toggle('pause');
     playNum === (playList.length - 1) ? playNum = 0 : playNum++;
-    /* playAudio(); */
+    playAudio();
 }
 
 function playPrev() {
     isPlay = false;
-    playBtn.classList.toggle('pause');
     playNum === 0 ? playNum = playList.length - 1 : playNum--;
-  /*   playAudio(); */
+    playAudio();
 }
 
 playBtn.addEventListener('click', playAudio);
