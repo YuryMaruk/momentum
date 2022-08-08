@@ -137,9 +137,18 @@ setBg(); /* set background image when load page */
 
 /* Weather widget */
 
-async function getWeather() {  /* function return weather*/
-    city.value === '' ? city.value = 'Минск' : false;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=ru&appid=8e1bd9aa041e2c8646f4afd33df4d61b&units=metric`;
+async function getWeather(lang) {  /* function return weather*/
+    let town = '';
+    switch (lang) {
+        case 'ru':
+            town = 'Минск';
+            break;
+        case 'en':
+            town = 'Minsk';
+            break;
+    }
+    city.value === '' ? city.value = town : false;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${lang}&appid=8e1bd9aa041e2c8646f4afd33df4d61b&units=metric`;
     const res = await fetch(url);
     const data = await res.json();
 
@@ -148,9 +157,9 @@ async function getWeather() {  /* function return weather*/
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
 }
 
-city.addEventListener('change', getWeather);
+city.addEventListener('change', () => getWeather(languege));
 
-getWeather();
+getWeather(languege);
 
 /* Quote widget */
 
@@ -165,7 +174,7 @@ async function getQuote(lang) {      /*function return random quote */
             quotes = '../json/dataEN.json';
             break;
     }
-    
+
     const res = await fetch(quotes);
     const data = await res.json();
     const randomNumber = getRandomInt(0, data.length);
