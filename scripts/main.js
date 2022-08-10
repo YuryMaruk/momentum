@@ -23,7 +23,7 @@ const timeClass = document.querySelector('.time'),
 let randomNum = 0,
     isPlay = false,
     playNum = 0,
-    languege = 'en';
+    languege = 'ru';
 
 
 /* Show time */
@@ -41,7 +41,7 @@ showTime();
 
 let options,
     currentDate,
-    objDate;  
+    objDate;
 
 switch (languege) {
     case 'ru':
@@ -66,9 +66,10 @@ showDate();
 
 /* Show greeting */
 
+let greetingText = '';
+
 function showGreeting() {
-    const timeOfDay = getTimeOfDay();
-    greetingSpan.textContent = `Good ${timeOfDay}`;
+    greetingSpan.textContent = greetingText;
     setInterval(showGreeting, 1000);
 }
 
@@ -94,6 +95,28 @@ function getTimeOfDay() {    /* This function returns the time of day */
     }
 
     return timeOfDay;
+}
+
+switch (languege) {
+    case 'en':
+        greetingText = `Good ${getTimeOfDay()}`;
+        break;
+    case 'ru':
+        switch (getTimeOfDay()) {
+            case 'night':
+                greetingText = 'Доброй ночи';
+                break;
+            case 'morning':
+                greetingText = 'Доброе утро';
+                break;
+            case 'afternoon':
+                greetingText = 'Добрый день';
+                break;
+            case 'evening':
+                greetingText = 'Добрый вечер';
+                break;
+        }
+        break;
 }
 
 showGreeting();
