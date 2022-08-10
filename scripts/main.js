@@ -102,6 +102,7 @@ switch (languege) {
         greetingText = `Good ${getTimeOfDay()}`;
         break;
     case 'ru':
+        greetingInput.placeholder = '[Введите имя]';
         switch (getTimeOfDay()) {
             case 'night':
                 greetingText = 'Доброй ночи';
