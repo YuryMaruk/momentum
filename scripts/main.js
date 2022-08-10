@@ -39,15 +39,30 @@ showTime();
 
 /* Show date */
 
+let options,
+    currentDate,
+    objDate;  
+
+switch (languege) {
+    case 'ru':
+        options = { weekday: 'long', day: '2-digit', month: 'long' };
+        objDate = new Date();
+        currentDate = objDate.toLocaleDateString('ru-RU', options);
+        break;
+    case 'en':
+        options = { weekday: 'long', month: 'long', day: '2-digit' };
+        objDate = new Date();
+        currentDate = objDate.toLocaleDateString('en-En', options);
+        break;
+}
+
 function showDate() {
-    const date = new Date();
-    const options = { weekday: 'long', month: 'long', day: '2-digit' };
-    const currentDate = date.toLocaleDateString('en-En', options);
     dateClass.textContent = currentDate;
     setInterval(showDate, 1000);
 }
 
 showDate();
+
 
 /* Show greeting */
 
