@@ -293,6 +293,30 @@ playBtn.addEventListener('click', playAudio);
 playNextBtn.addEventListener('click', playNext);
 playPrevBtn.addEventListener('click', playPrev);
 
+/* 
+fuctions return link to image */
+
+async function getLinkToUnsplash() {
+    const url = 'https://api.unsplash.com/photos/random?query=morning&client_id=TqRKu6pS1v2HHKQ2Dme1BXl4xVL3O4hTbnyugLYE_AM';
+    const res = await fetch(url);
+    const data = await res.json();
+
+    console.log(data.urls.regular);
+
+}
+
+async function getLinkToFlickr() {
+    const url = 'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=b598987bbf5211f0fe1dc12e1977bda5&tags=nature&extras=url_l&format=json&nojsoncallback=1';
+    const res = await fetch(url);
+    const data = await res.json();
+
+    console.log(data.photos.photo[randomNum].url_l);
+
+}
+
+
+
+
 
 
 
