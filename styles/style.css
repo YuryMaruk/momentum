@@ -30,6 +30,7 @@ html {
 /* Header */
 
 .header {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -40,6 +41,9 @@ html {
 
 /* Settings */
 .settings {
+    position: absolute;
+    top: 10%;
+    left: 43%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,7 +53,37 @@ html {
     gap: 20px;
     background-color: rgba(128, 128, 128, 0.5);
     border-radius: 16px;
+    transition: 0.5s;
+    transform: translateY(-120%);
+    
 }
+
+.settings-active {
+    transform: translateY(0%);
+    z-index: 2;
+}
+
+.close {
+    position:absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background-image: url('../images/close.svg'); 
+    background-size: contain;
+    transition: 0.3s;
+    opacity: 0.5;
+}
+
+.close:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.close:active {
+    transform: scale(1.2);
+}
+
 
 .language {
     display: flex;
@@ -82,15 +116,35 @@ html {
 .display-blocks {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 .list-checkboxs {
     display: flex;
+    gap: 20px;
 }
 
 .box {
     display: flex;
     flex-direction: column;
 }
+
+.settings-icon {
+    width: 32px;
+    height: 32px;
+    background-image: url(../images/settings.svg);
+    background-size: contain;
+    border: 0;
+    outline: 0;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: 0.1s;
+    visibility: visible;
+}
+
+.settings-icon:hover {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 
 /* Audio player */
 
@@ -119,6 +173,7 @@ html {
   
   .play-item:hover {
     opacity: 1;
+    
   }
   
   /* .play-item::before {

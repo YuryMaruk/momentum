@@ -18,16 +18,16 @@ const timeClass = document.querySelector('.time'),
     playNextBtn = document.querySelector('.play-next'),
     playBtn = document.querySelector('.play'),
     ulPlayList = document.querySelector('.play-list'),
-    languegeInputs = document.querySelectorAll('.language-input');
+    languegeInputs = document.querySelectorAll('.language-input'),
+    settingsIcon = document.querySelector('.settings-icon'),
+    settings = document.querySelector('.settings'),
+    close = document.querySelector('.close');
 
 
 let randomNum = 0,
     isPlay = false,
     playNum = 0,
-    languege = 'ru';
-
-    /* set languege */
-
+    languege = 'ru'; /* set languege */
 
 /* Show time */
 
@@ -327,6 +327,17 @@ function changeLanguage() {
         }
     })
 }
+
+settingsIcon.addEventListener('click', () => {
+    settingsIcon.style = 'visibility: hidden;';
+    settings.classList.add('settings-active');
+});
+
+close.addEventListener('click', () => {
+    settings.classList.remove('settings-active');
+    settingsIcon.style = 'visibility: visible;';
+})
+
 
 
 
