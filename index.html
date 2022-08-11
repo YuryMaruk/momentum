@@ -34,8 +34,35 @@
         <!-- Settings container -->
         <div class="settings">
             <div class="language">
-                <input type="radio" class="language-input" id="langEn" value="en">
-                <input type="radio" class="language-input" id="langRu" value="ru">
+                <p><input type="radio" class="language-input" id="langEn" value="en" name="lang" checked>English</p>
+                <p><input type="radio" class="language-input" id="langRu" value="ru" name="lang">Russian</p>
+            </div>
+            <div class="link-api">
+                <div class="inputs-api">
+                    <p><input type="radio" class="api" name="source-api" checked>Github</p>
+                    <p><input type="radio" class="api" name="source-api">Unsplash</p>
+                    <p><input type="radio" class="api" name="source-api">Flickr</p>
+                </div>
+                <div class="input-tags">
+                    <input type="text" class="tags" placeholder="Tags for API">
+                </div>
+            </div>
+            <div class="display-blocks">
+                <p class="p-dispalay-blocks">Display none</p>
+                <div class="list-checkboxs">
+                    <div class="box"><label for="checkbox">player</label><input type="checkbox"
+                        class="display-block" value="player" name="checkbox">
+                    <label for="checkbox">weather</label><input name="weather" type="checkbox" class="display-block"
+                        value="weather">
+                    <label for="checkbox">time</label><input name="time" type="checkbox" class="display-block"
+                        value="time"></div>
+                    <div class="box"><label for="checkbox">date</label><input name="date" type="checkbox" class="display-block"
+                        value="date">
+                    <label for="checkbox">greeting</label><input name="greeting" type="checkbox" class="display-block"
+                        value="greeting">
+                    <label for="checkbox">quote</label><input name="quote" type="checkbox" class="display-block"
+                        value="quote"></div>
+                </div>
             </div>
         </div>
         <!-- Finish settings container -->

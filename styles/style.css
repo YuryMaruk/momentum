@@ -46,8 +46,50 @@ html {
     align-items: center;
     min-width: 240px;
     min-height: 240px;
+    gap: 20px;
     background-color: rgba(128, 128, 128, 0.5);
     border-radius: 16px;
+}
+
+.language {
+    display: flex;
+    gap: 10px;
+}
+
+.inputs-api {
+    display: flex;
+    gap: 10px;
+}
+
+.tags {
+    width: 170px;
+    height: 34px;
+    padding: 5px;
+    font-size: 20px;
+    line-height: 24px;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid #fff;
+    background-color: transparent;
+}
+.tags::placeholder {
+    font-size: 20px;
+    color: #fff;
+    opacity: .6;
+}
+
+.display-blocks {
+    display: flex;
+    flex-direction: column;
+}
+.list-checkboxs {
+    display: flex;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
 }
 
 /* Audio player */

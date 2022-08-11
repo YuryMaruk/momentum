@@ -17,13 +17,16 @@ const timeClass = document.querySelector('.time'),
     playPrevBtn = document.querySelector('.play-prev'),
     playNextBtn = document.querySelector('.play-next'),
     playBtn = document.querySelector('.play'),
-    ulPlayList = document.querySelector('.play-list');
+    ulPlayList = document.querySelector('.play-list'),
+    languegeInputs = document.querySelectorAll('.language-input');
 
 
 let randomNum = 0,
     isPlay = false,
     playNum = 0,
     languege = 'ru';
+
+    /* set languege */
 
 
 /* Show time */
@@ -313,6 +316,18 @@ async function getLinkToFlickr() {
     console.log(data.photos.photo[randomNum].url_l);
 
 }
+
+/* Settings widget */
+
+function changeLanguage() {
+
+    languegeInputs.forEach(element => {
+        if(element.checked){
+            languege = element.value;
+        }
+    })
+}
+
 
 
 
