@@ -33,6 +33,9 @@ const state = {
 if (localStorage.getItem('language')) {
     state.languege = localStorage.getItem('language');
 }
+/* if (localStorage.getItem('sourceApi')) {
+    state.sourceImageApi = localStorage.getItem('sourceApi');
+} */
 
 let randomNum = 0,
     isPlay = false,
@@ -159,7 +162,7 @@ switch (languege) {
         }
         break;
 }
-console.log('не забудь оптимизировать showgreeting' + languege);
+/* console.log('не забудь оптимизировать showgreeting' + languege); */
 showGreeting();
 
 
@@ -176,11 +179,20 @@ getRandomInt(1, 21);
 
 
 function setBg() {              /*  function set random background image */
-    const timeOfDay = getTimeOfDay();
     const img = new Image();
 
-    randomNum < 10 ? randomNum = String(randomNum).padStart(2, 0) : randomNum;
-    img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${randomNum}.jpg`;
+    
+    switch (state.sourceImageApi) {
+        case 'github':
+            randomNum < 10 ? randomNum = String(randomNum).padStart(2, 0) : randomNum;
+            img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${getTimeOfDay()}/${randomNum}.jpg`;
+            break;
+        case 'unsplash':
+            console.log(getLinkToUnsplash());
+           img.src = `${getLinkToUnsplash()}`;
+            break;
+    }
+
     img.onload = () => {
         body.style.backgroundImage = `url(${img.src})`;
     };
@@ -215,12 +227,14 @@ async function getWeather(lang) {  /* function return weather*/
     }
     city.value === '' ? city.value = town : false;
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${lang}&appid=8e1bd9aa041e2c8646f4afd33df4d61b&units=metric`;
+    
     const res = await fetch(url);
     const data = await res.json();
 
-    temperature.textContent = `${data.main.temp}°C`;
-    weatherDescription.textContent = data.weather[0].description;
-    weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+        temperature.textContent = `${Math.round(data.main.temp)}°C`;
+        weatherDescription.textContent = data.weather[0].description;
+        weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+ 
 }
 
 city.addEventListener('change', () => getWeather(languege));
@@ -324,13 +338,17 @@ playPrevBtn.addEventListener('click', playPrev);
 fuctions return link to image */
 
 async function getLinkToUnsplash() {
-    const url = 'https://api.unsplash.com/photos/random?query=morning&client_id=TqRKu6pS1v2HHKQ2Dme1BXl4xVL3O4hTbnyugLYE_AM';
+    const url = `https://api.unsplash.com/photos/random?query=${getTimeOfDay()}&client_id=TqRKu6pS1v2HHKQ2Dme1BXl4xVL3O4hTbnyugLYE_AM`;
     const res = await fetch(url);
     const data = await res.json();
 
-    console.log(data.urls.regular);
+    let result = '';
+    result = data.urls.regular;
 
+    return result;
 }
+/* console.log(getLinkToUnsplash().then(onFulfilled)); */
+
 
 async function getLinkToFlickr() {
     const url = 'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=b598987bbf5211f0fe1dc12e1977bda5&tags=nature&extras=url_l&format=json&nojsoncallback=1';
