@@ -9,6 +9,7 @@
     <!-- Reset style CSS -->
     <link rel="stylesheet" href="styles/reset-settings.css">
     <!-- Connect CSS style -->
+    <link rel="stylesheet" href="styles/owfont-regular.css" />
     <link rel="stylesheet" href="styles/style.css">
     <title>Momentum</title>
 </head>
@@ -18,27 +19,101 @@
     <!-- Header -->
 
     <header class="header">
-        
+
+        <!-- Start player -->
+        <div class="player">
+            <div class="player-controls">
+                <button class="play-prev player-icon"></button>
+                <button class="play player-icon"></button>
+                <button class="play-next player-icon"></button>
+            </div>
+            <ul class="play-list"></ul>
+        </div>
+        <!-- End player -->
+
+        <!-- Settings container -->
+        <div class="settings-icon"></div>
+        <div class="settings">
+            <div class="close"></div>
+            <div class="language">
+                <p><input type="radio" class="language-input" id="langEn" value="en" name="lang" checked>English</p>
+                <p><input type="radio" class="language-input" id="langRu" value="ru" name="lang">Russian</p>
+            </div>
+            <div class="link-api">
+                <div class="inputs-api">
+                    <p><input type="radio" class="api" value="github" name="source-api" checked>Github</p>
+                    <p><input type="radio" class="api" value="unsplash" name="source-api">Unsplash</p>
+                    <p><input type="radio" class="api" value="flickr" name="source-api">Flickr</p>
+                </div>
+                <div class="input-tags">
+                    <input type="text" class="tags" placeholder="Tags for API">
+                </div>
+            </div>
+            <div class="display-blocks">
+                <p class="p-dispalay-blocks">Display none</p>
+                <div class="list-checkboxs">
+                    <div class="box"><label for="checkbox">player</label><input type="checkbox"
+                        class="display-block" value="player" name="checkbox">
+                    <label for="checkbox">weather</label><input name="weather" type="checkbox" class="display-block"
+                        value="weather">
+                    <label for="checkbox">time</label><input name="time" type="checkbox" class="display-block"
+                        value="time"></div>
+                    <div class="box"><label for="checkbox">date</label><input name="date" type="checkbox" class="display-block"
+                        value="date">
+                    <label for="checkbox">greeting</label><input name="greeting" type="checkbox" class="display-block"
+                        value="greeting">
+                    <label for="checkbox">quote</label><input name="quote" type="checkbox" class="display-block"
+                        value="quote"></div>
+                </div>
+                <button class="settings-button">Apply</button>
+            </div>
+        </div>
+        <!-- Finish settings container -->
+
+        <!-- Start weather -->
+        <div class="weather">
+            <input type="text" class="city" placeholder="Enter city" />
+            <i class="weather-icon owf"></i>
+            <div class="weather-error"></div>
+            <div class="description-container">
+                <span class="temperature"></span>
+                <span class="weather-description"></span>
+            </div>
+            <div class="wind"></div>
+            <div class="humidity"></div>
+        </div>
+        <!--  End weather -->
+
     </header>
 
-     <!-- Main -->
+    <!-- Main -->
 
     <main class="main">
         <div class="time"></div>
         <div class="date"></div>
         <div class="greeting">
-            <span class="greeting-span">rtretre</span>
+            <span class="greeting-span"></span>
             <input type="text" class="greeting-input" placeholder="[Enter name]">
+            <div class="slider-icons">
+                <button class="slide-prev slider-icon"></button>
+                <button class="slide-next slider-icon"></button>
+            </div>
         </div>
     </main>
 
     <!-- Footer -->
 
-    <footer class="footer"></footer>
+    <footer class="footer">
+        <button class="change-quote"></button>
+        <div>
+            <div class="quote"></div>
+            <div class="author"></div>
+        </div>
+    </footer>
 
 
     <!--  Scripts -->
-    <script src="scripts/main.js"></script>
+    <script src="scripts/main.js" type="module"></script>
 </body>
 
 </html>
