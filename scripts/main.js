@@ -21,13 +21,51 @@ const timeClass = document.querySelector('.time'),
     languegeInputs = document.querySelectorAll('.language-input'),
     settingsIcon = document.querySelector('.settings-icon'),
     settings = document.querySelector('.settings'),
-    close = document.querySelector('.close');
+    close = document.querySelector('.close'),
+    settingsBtn = document.querySelector('.settings-button');
+
+
+
+
+
+/* localstorage*/
+
+function setLocalStorage() {
+    localStorage.setItem('userName', greetingInput.value);
+    localStorage.setItem('language', state.languege);
+    localStorage.setItem('sourceApi', state.sourceImageApi);
+    localStorage.setItem('unvisible', state.unvisibleBlocks);
+}
+
+
+window.addEventListener('load', getLocalStorage);
+
+window.addEventListener('beforeunload', setLocalStorage);
+
+function getLocalStorage() {
+    if (localStorage.getItem('userName')) {
+        greetingInput.value = localStorage.getItem('userName');
+    }
+    state.languege = localStorage.getItem('language');
+
+}
+
+const state = {
+    languege: 'ru',
+    sourceImageApi: 'github',
+    unvisibleBlocks: []
+}
 
 
 let randomNum = 0,
     isPlay = false,
     playNum = 0,
-    languege = 'ru'; /* set languege */
+    languege = state.languege; /* set languege */
+
+    console.log(state.languege);
+
+
+
 
 /* Show time */
 
@@ -125,20 +163,7 @@ switch (languege) {
 
 showGreeting();
 
-/* Show name of user */
 
-function setLocalStorage() {
-    localStorage.setItem('userName', greetingInput.value);
-}
-
-window.addEventListener('beforeunload', setLocalStorage);
-
-function getLocalStorage() {
-    if (localStorage.getItem('userName')) {
-        greetingInput.value = localStorage.getItem('userName');
-    }
-}
-window.addEventListener('load', getLocalStorage);
 
 /* Slider background images */
 
@@ -319,13 +344,15 @@ async function getLinkToFlickr() {
 
 /* Settings widget */
 
-function changeLanguage() {
+function changeLanguege() {
 
     languegeInputs.forEach(element => {
-        if(element.checked){
+        if (element.checked) {
             languege = element.value;
         }
     })
+
+    return languege;
 }
 
 settingsIcon.addEventListener('click', () => {
@@ -337,6 +364,13 @@ close.addEventListener('click', () => {
     settings.classList.remove('settings-active');
     settingsIcon.style = 'visibility: visible;';
 })
+
+settingsBtn.addEventListener('click', () => {
+    state.languege = changeLanguege();
+    document.location.reload();
+})
+
+
 
 
 
