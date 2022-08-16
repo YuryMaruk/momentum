@@ -24,7 +24,20 @@ const timeClass = document.querySelector('.time'),
     close = document.querySelector('.close'),
     settingsBtn = document.querySelector('.settings-button');
 
+const state = {
+    languege: 'en',
+    sourceImageApi: 'github',
+    unvisibleBlocks: []
+}
 
+if (localStorage.getItem('language')) {
+    state.languege = localStorage.getItem('language');
+}
+
+let randomNum = 0,
+    isPlay = false,
+    playNum = 0,
+    languege = state.languege; /* set languege */
 
 
 
@@ -38,32 +51,17 @@ function setLocalStorage() {
 }
 
 
-window.addEventListener('load', getLocalStorage);
-
 window.addEventListener('beforeunload', setLocalStorage);
 
 function getLocalStorage() {
     if (localStorage.getItem('userName')) {
         greetingInput.value = localStorage.getItem('userName');
     }
-    state.languege = localStorage.getItem('language');
-
+    /*  state.languege = localStorage.getItem('language');
+     console.log(state.languege); */
 }
 
-const state = {
-    languege: 'ru',
-    sourceImageApi: 'github',
-    unvisibleBlocks: []
-}
-
-
-let randomNum = 0,
-    isPlay = false,
-    playNum = 0,
-    languege = state.languege; /* set languege */
-
-    console.log(state.languege);
-
+window.addEventListener('load', getLocalStorage);
 
 
 
@@ -112,6 +110,7 @@ let greetingText = '';
 function showGreeting() {
     greetingSpan.textContent = greetingText;
     setInterval(showGreeting, 1000);
+
 }
 
 function getTimeOfDay() {    /* This function returns the time of day */
@@ -160,7 +159,7 @@ switch (languege) {
         }
         break;
 }
-
+console.log('не забудь оптимизировать showgreeting' + languege);
 showGreeting();
 
 
